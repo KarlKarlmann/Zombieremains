@@ -1,0 +1,163 @@
+{
+  "screamer1": {
+    "subtitle": "subtitles.screamer1",
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer1",
+        "stream": false
+      }
+    ]
+  },
+  "screamer2": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer2",
+        "stream": false
+      }
+    ]
+  },
+  "screamer3": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer3",
+        "stream": false
+      }
+    ]
+  },
+  "screamer4": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer4",
+        "stream": false
+      }
+    ]
+  },
+  "screamer5": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer5",
+        "stream": false
+      }
+    ]
+  },
+  "screamer6": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer6",
+        "stream": false
+      }
+    ]
+  },
+  "screamer7": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer7",
+        "stream": false
+      }
+    ]
+  },
+  "screamer8": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer8",
+        "stream": false
+      }
+    ]
+  },
+  "screamer9": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer9",
+        "stream": false
+      }
+    ]
+  },
+  "screamer10": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer91",
+        "stream": false
+      }
+    ]
+  },
+  "screamer11": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer92",
+        "stream": false
+      }
+    ]
+  },
+  "screamer12": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer93",
+        "stream": false
+      }
+    ]
+  },
+  "screamer13": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer94",
+        "stream": false
+      }
+    ]
+  },
+  "screamer14": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer95",
+        "stream": false
+      }
+    ]
+  },
+  "screamer15": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer96",
+        "stream": false
+      }
+    ]
+  },
+  "screamer16": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer97",
+        "stream": false
+      }
+    ]
+  },
+  "screamer17": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer98",
+        "stream": false
+      }
+    ]
+  },
+  "screamer18": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer99",
+        "stream": false
+      }
+    ]
+  },
+  "screamer19": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer991",
+        "stream": false
+      }
+    ]
+  },
+  "screamer20": {
+    "sounds": [
+      {
+        "name": "zombiesleeping:screamer992",
+        "stream": false
+      }
+    ]
+  }
+}

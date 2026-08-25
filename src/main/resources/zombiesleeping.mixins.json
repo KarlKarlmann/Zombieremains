@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.zombiesleeping.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "zombiesleeping.refmap.json",
+  "mixins": [
+    "WalkNodeEvaluatorMixin"
+  ],
+"client": [
+    "client.FireBlockOffsetMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

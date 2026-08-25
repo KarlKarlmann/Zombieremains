@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:rotten_flesh", "weight": 50 },
+        { "type": "minecraft:item", "name": "minecraft:bone", "weight": 25 },
+        { "type": "minecraft:item", "name": "minecraft:raw_copper", "weight": 10 },
+        { "type": "minecraft:item", "name": "minecraft:iron_nugget", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:gold_nugget", "weight": 5 },
+        { "type": "minecraft:item", "name": "minecraft:zombie_head", "weight": 2 },
+        { "type": "minecraft:item", "name": "minecraft:skeleton_skull", "weight": 2 },
+        { "type": "minecraft:item", "name": "minecraft:iron_helmet", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:iron_chestplate", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:iron_sword", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:iron_shovel", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:chainmail_boots", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:chainmail_helmet", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] },
+        { "type": "minecraft:item", "name": "minecraft:leather_boots", "weight": 1, "functions": [{ "function": "minecraft:set_damage", "damage": { "min": 0.1, "max": 0.95 } }] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "enchantments": [
+              {
+                "enchantment": "minecraft:fortune",
+                "levels": { "min": 3 }
+              }
+            ]
+          }
+        },
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.05
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dune_armor_trim_smithing_template"
+        }
+      ]
+    }
+  ]
+}

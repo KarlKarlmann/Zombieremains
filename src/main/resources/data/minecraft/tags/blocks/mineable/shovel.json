@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "zombiesleeping:zombieremains",
+    "zombiesleeping:smoldering_zombieremains",
+	"zombiesleeping:burnt_zombieremains"
+  ]
+}

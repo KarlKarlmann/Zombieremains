@@ -1,0 +1,90 @@
+plugins {
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+
+version = project.hasProperty('mod_version') ? project.getProperty('mod_version') : '1.0.0'
+group = 'com.karlkarlmann.zombiesleeping'
+archivesBaseName = 'zombiesleeping'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'mixin.env.disableRefMap', 'true'
+            arg "-mixin.config=zombiesleeping.mixins.json"
+            
+            def mcreatorJvmOptions = System.getenv('MCREATOR_JVM_OPTIONS')
+            if (mcreatorJvmOptions) {
+                jvmArgs += mcreatorJvmOptions.split("\\s+").findAll { it.trim() }.toList()
+            }
+
+            mods {
+                zombiesleeping { source sourceSets.main }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'mixin.env.disableRefMap', 'true'
+            arg "-mixin.config=zombiesleeping.mixins.json"
+
+            mods {
+                zombiesleeping { source sourceSets.main }
+            }
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, "zombiesleeping.refmap.json"
+    config "zombiesleeping.mixins.json"
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    implementation fg.deobf(fileTree(dir: 'libs', include: '*.jar'))
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Variablenersetzung für mods.toml
+def replaceProperties = [
+        version: project.version,
+        mod_version: project.version
+]
+
+processResources {
+    inputs.properties replaceProperties
+    replaceProperties.put 'project', project
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties
+    }
+}
+
+// Build-Konfiguration & Reobfuscation
+tasks.named('jar', Jar).configure {
+    archiveFileName = "zombieremains_by_karlkarlmann_1.20.1_ver_${project.version}.jar"
+}
+
+jar.finalizedBy('reobfJar')
+
+// Lokale Skripte laden (falls vorhanden)
+if (file('local-git.gradle').exists()) {
+    apply from: 'local-git.gradle'
+}
+
+if (file('local-env.gradle').exists()) {
+    apply from: 'local-env.gradle'
+}

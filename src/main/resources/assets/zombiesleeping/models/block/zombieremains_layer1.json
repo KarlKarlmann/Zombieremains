@@ -1,0 +1,86 @@
+{
+  "parent": "block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "zombiesleeping:block/zombieremains",
+    "texture": "zombiesleeping:block/zombieremains",
+    "cross": "zombiesleeping:block/zombieremains_cross_1"
+  },
+  "elements": [
+    {
+      "name": "Pile_Tier_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#texture"
+        },
+        "up": {
+          "texture": "#texture"
+        },
+        "north": {
+          "texture": "#texture"
+        },
+        "south": {
+          "texture": "#texture"
+        },
+        "west": {
+          "texture": "#texture"
+        },
+        "east": {
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Cross_NS",
+      "from": [
+        0,
+        0,
+        8
+      ],
+      "to": [
+        16,
+        12,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#cross"
+        },
+        "south": {
+          "texture": "#cross"
+        }
+      }
+    },
+    {
+      "name": "Cross_EW",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        12,
+        16
+      ],
+      "faces": {
+        "west": {
+          "texture": "#cross"
+        },
+        "east": {
+          "texture": "#cross"
+        }
+      }
+    }
+  ]
+}
