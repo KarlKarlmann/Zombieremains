@@ -10,20 +10,15 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -43,10 +38,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraft.world.entity.monster.Enemy;
 import javax.annotation.Nullable;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 
@@ -239,6 +232,22 @@ public class ZombieremainsBlock extends FallingBlock {
         }
     }
 
+    @Override
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
+
+        // Wir führen das nur auf dem Server aus
+        if (!world.isClientSide() && world instanceof ServerLevel serverLevel) {
+            
+            // Nutzt die konfigurierte Spawn-Chance. 
+            if (serverLevel.getRandom().nextFloat() < ConfigProcedure.SPAWN_CHANCE.get()) {
+                
+                // Block in deine bestehende Warteschlange einreihen
+                net.zombiesleeping.ZombieSpawnPipeline.enqueue(serverLevel, pos.immutable());
+            }
+        }
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
@@ -298,9 +307,11 @@ public class ZombieremainsBlock extends FallingBlock {
         int layersToProcess = forceSpawnAll ? currentLayers : 1;
         
         for (int i = 0; i < layersToProcess; i++) {
-            EntityType<?> mobType = ConfigProcedure.getRandomMobForLayers(currentLayers - i, new java.util.Random(world.random.nextLong()));
-            if (mobType != null) {
-                Mob mob = (Mob) mobType.create(world);
+            // Nutzt jetzt sauber das neu designte SpawnRule-System aus der Config
+            ConfigProcedure.SpawnRule rule = ConfigProcedure.getRandomSpawnRuleForLayers(currentLayers - i, new java.util.Random(world.random.nextLong()));
+            
+            if (rule != null && rule.mobType != null) {
+                Mob mob = (Mob) rule.mobType.create(world);
                 if (mob != null) {
                     double spawnX = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 1.5;
                     double spawnY = pos.getY() + 1;
@@ -308,7 +319,8 @@ public class ZombieremainsBlock extends FallingBlock {
 
                     mob.moveTo(spawnX, spawnY, spawnZ, random.nextFloat() * 360, 0.0F);
 
-                    enhanceMobFromConfig(mob, currentLayers - i);
+                    // Wendet Health, Damage, Speed, CustomName und die CustomTexture NBT an
+                    ConfigProcedure.applyEnhancements(mob, rule, currentLayers - i);
 
                     if (targetPlayer != null) {
                         mob.setTarget(targetPlayer);
@@ -329,42 +341,6 @@ public class ZombieremainsBlock extends FallingBlock {
         }
         
         return mobsSpawned;
-    }
-
-    private static void enhanceMobFromConfig(Mob mob, int currentLayers) {
-        ConfigProcedure.MobEnhancement enhancement = 
-            ConfigProcedure.getEnhancementForMob(mob.getType(), currentLayers);
-            
-        if (enhancement == null) return;
-
-        int layerMultiplier = currentLayers - enhancement.minLayers + 1;
-
-        if (enhancement.healthBonus > 0) {
-            float bonusHealth = enhancement.healthBonus * layerMultiplier;
-            if (mob.getAttribute(Attributes.MAX_HEALTH) != null) {
-                double newMaxHealth = mob.getAttribute(Attributes.MAX_HEALTH).getBaseValue() + bonusHealth;
-                mob.getAttribute(Attributes.MAX_HEALTH).setBaseValue(newMaxHealth);
-                mob.setHealth((float) newMaxHealth);
-            }
-        }
-
-        if (enhancement.damageBonus > 0 && mob.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
-            float bonusDamage = enhancement.damageBonus * layerMultiplier;
-            double newDamage = mob.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue() + bonusDamage;
-            mob.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(newDamage);
-        }
-
-        if (enhancement.speedBonus > 0 && mob.getAttribute(Attributes.MOVEMENT_SPEED) != null) {
-            float bonusSpeed = enhancement.speedBonus * layerMultiplier;
-            double newSpeed = mob.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() + bonusSpeed;
-            mob.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(newSpeed);
-        }
-
-        if (!enhancement.customName.isEmpty()) {
-            String colorCode = currentLayers >= 7 ? "§4" : currentLayers >= 5 ? "§6" : "§a";
-            mob.setCustomName(Component.literal(colorCode + enhancement.customName));
-            mob.setCustomNameVisible(true);
-        }
     }
 
     public static boolean addLayer(ServerLevel world, BlockPos pos, int layersToAdd) {

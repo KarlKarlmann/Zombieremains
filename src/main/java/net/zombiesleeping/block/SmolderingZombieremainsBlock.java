@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
@@ -92,21 +93,6 @@ public class SmolderingZombieremainsBlock extends FallingBlock {
         return super.canSurvive(state, world, pos);
     }
 
-    // Chance PRO RANDOM-TICK, dass ueberhaupt etwas passiert (wie Burnts
-    // eigenes SmolderingWoolTickProcedure: dort 0.5%). Bei ~68s durchschnittl.
-    // Abstand zwischen zwei Random-Ticks eines EINZELNEN Blocks (Standard
-    // randomTickSpeed=3) ergibt das ~3,8h bis zur Entscheidung PRO BLOCK.
-    // Bei vielen Remains-Bloecken gleichzeitig (z.B. Spawner-Raum) sinkt die
-    // Zeit bis zum ERSTEN Ergebnis entsprechend (N Bloecke -> ~1/N der Zeit).
-    // Frei zum Tunen - hoeher = schneller fertig.
-    private static final float RESOLVE_CHANCE = 0.005f;
-    // Wenn es soweit ist: 80% kuehlt zu einem permanenten Endzustand ab,
-    // 20% wird komplett zerstoert - exakt Burnts eigene Verteilung.
-    private static final float CHANCE_TO_COOL_DOWN = 0.8f;
-    // Chance pro Random-Tick, dass ein Nachbarblock ebenfalls Feuer faengt,
-    // solange dieser Block noch schwelt. Unabhaengig vom Resolve-Roll oben.
-    private static final float FIRE_SPREAD_CHANCE = 0.05f;
-
     @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         super.randomTick(state, world, pos, random);
@@ -120,16 +106,44 @@ public class SmolderingZombieremainsBlock extends FallingBlock {
 
         trySpreadFire(world, pos, random);
 
-        if (random.nextFloat() >= RESOLVE_CHANCE) {
-            return; // noch nicht "fertig gebrannt" - bleibt sichtbar am Schwelen
+        // RESOLVE_CHANCE aus der Config laden (Ist der Block "fertig" mit schwelen?)
+        if (random.nextFloat() >= ConfigProcedure.SMOLDERING_RESOLVE_CHANCE.get()) {
+            return; 
         }
 
-        if (random.nextFloat() < CHANCE_TO_COOL_DOWN) {
+        // CHANCE_TO_COOL_DOWN aus der Config laden (Kühlt er ab oder wird er zerstört?)
+        if (random.nextFloat() < ConfigProcedure.SMOLDERING_CHANCE_TO_COOL_DOWN.get()) {
             // Endzustand: kuehlt zu ausgebrannten, permanenten Resten ab
             BlockState burnt = ZombiesleepingModBlocks.BURNT_ZOMBIEREMAINS.get()
                     .defaultBlockState()
                     .setValue(BurntZombieremainsBlock.LAYERS, layers);
             world.setBlock(pos, burnt, 3);
+
+            // Spawn-Versuch mit der speziellen Smoldering-Tabelle
+            if (random.nextFloat() < ConfigProcedure.SMOLDERING_SPAWN_CHANCE.get()) { 
+                ConfigProcedure.SpawnRule rule = ConfigProcedure.getRandomSmolderingSpawnRuleForLayers(layers, new java.util.Random(world.random.nextLong()));
+                
+                if (rule != null && rule.mobType != null) {
+                    Mob mob = (Mob) rule.mobType.create(world);
+                    if (mob != null) {
+                        mob.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, random.nextFloat() * 360, 0.0F);
+                        
+                        // Hier passiert die Magie: HP, Damage, Speed, Name und Custom-Texture-NBT 
+                        // werden zentral und sauber auf das Entity angewendet!
+                        ConfigProcedure.applyEnhancements(mob, rule, layers);
+                        
+                        // Brennender Aschezombie für mehr Atmosphäre
+                        mob.setSecondsOnFire(8);
+
+                        world.addFreshEntity(mob);
+                        
+                        // Coole Partikel für den "Asche-Spawn"
+                        world.sendParticles(ParticleTypes.LAVA, 
+                            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 
+                            5, 0.2, 0.2, 0.2, 0.05);
+                    }
+                }
+            }
         } else {
             // Alternative: verglueht komplett, nichts bleibt uebrig
             world.removeBlock(pos, false);
@@ -138,21 +152,19 @@ public class SmolderingZombieremainsBlock extends FallingBlock {
                     8, 0.3, 0.2, 0.3, 0.02);
         }
 
+        // Zischen beim Erlöschen abspielen
         world.playSound(null, pos, net.minecraft.sounds.SoundEvents.FIRE_EXTINGUISH,
                 net.minecraft.sounds.SoundSource.BLOCKS, 0.5F, 1.2F);
     }
 
     /**
-     * Setzt mit kleiner Chance ganz normales Vanilla-Feuer in eine freie
-     * Nachbarzelle. Bewusst KEIN direkter Aufruf von Burnts eigenen
-     * Prozeduren (WillitburnProcedure etc.), um ohne harte Abhaengigkeit
-     * auszukommen: Vanilla-Feuer breitet sich von alleine weiter aus, und
-     * FALLS Burnt installiert ist, wandelt dessen eigener
-     * FireBlockOnPlaceMixin dieses Vanilla-Feuer automatisch in deren
-     * FIRESTARTER-Block um - Integration passiert also von selbst.
+     * Setzt mit kleiner Chance ganz normales Vanilla-Feuer in eine freie Nachbarzelle. 
+     * Bewusst KEIN direkter Aufruf von Burnts eigenen Prozeduren (WillitburnProcedure etc.), 
+     * um ohne harte Abhaengigkeit auszukommen.
      */
     private void trySpreadFire(ServerLevel world, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() >= FIRE_SPREAD_CHANCE) {
+        // FIRE_SPREAD_CHANCE jetzt aus der Config geladen
+        if (random.nextFloat() >= ConfigProcedure.SMOLDERING_FIRE_SPREAD_CHANCE.get()) {
             return;
         }
         Direction dir = Direction.values()[random.nextInt(Direction.values().length)];
@@ -167,8 +179,6 @@ public class SmolderingZombieremainsBlock extends FallingBlock {
         }
     }
 
-    // Bleibt zusaetzlich ganz normal Vanilla-brennbar (schadet nicht, falls
-    // Burnt mal deinstalliert wird oder ein anderer Fire-Mod im Pack ist).
     @Override
     public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         return true;
@@ -183,19 +193,19 @@ public class SmolderingZombieremainsBlock extends FallingBlock {
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         return 30;
     }
-	
-	@Override
-	public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
-		// Erlaubt der KI, einen Weg auf dem Landweg (LAND) durch diesen Block zu planen
-		switch (type) {
-			case LAND:
-				return true;
-			case WATER:
-				return false;
-			case AIR:
-				return false;
-			default:
-				return false;
-		}
-	}
+    
+    @Override
+    public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
+        // Erlaubt der KI, einen Weg auf dem Landweg (LAND) durch diesen Block zu planen
+        switch (type) {
+            case LAND:
+                return true;
+            case WATER:
+                return false;
+            case AIR:
+                return false;
+            default:
+                return false;
+        }
+    }
 }

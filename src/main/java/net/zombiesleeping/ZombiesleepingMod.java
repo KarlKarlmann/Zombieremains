@@ -51,7 +51,7 @@ public class ZombiesleepingMod {
 		ZombiesleepingModTabs.REGISTRY.register(bus);
 		net.zombiesleeping.init.ZombiesleepingModParticles.REGISTRY.register(bus); // NEU: Partikel Registry
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigProcedure.SPEC);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigProcedure.SPEC, "zombiesleeping-common-v2.toml");
 
 	}
 
