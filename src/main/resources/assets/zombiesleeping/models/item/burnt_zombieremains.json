@@ -1,5 +1,5 @@
 {
-  "parent": "zombiesleeping:block/zombieremains_layer16",
+  "parent": "zombiesleeping:block/burnt_zombieremains_layer16_v4",
   "display": {
     "thirdperson": {
       "rotation": [
