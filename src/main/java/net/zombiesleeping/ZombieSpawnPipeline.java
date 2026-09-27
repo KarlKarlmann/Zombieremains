@@ -99,41 +99,42 @@ public final class ZombieSpawnPipeline {
      * Arbeitet die Queue ab, bis entweder das Pro-Tick-Limit erreicht ist
      * oder der Server keine Kapazitaet mehr hat.
      */
-    public static void tick() {
-        if (queue.isEmpty()) {
-            return;
-        }
+	public static void tick() {
+		if (queue.isEmpty()) {
+			return;
+		}
 
-        int maxPerTick = ConfigProcedure.MAX_SPAWNS_PER_TICK.get();
-        int processed = 0;
+		int maxPerTick = ConfigProcedure.MAX_SPAWNS_PER_TICK.get();
+		int processed = 0;
 
-        var iterator = queue.entrySet().iterator();
-        while (iterator.hasNext() && processed < maxPerTick) {
-            if (!ZombiesleepingMod.hasSpawnBudget()) {
-                break; // Server steht unter Last -> diesen Tick abbrechen, Rest bleibt in der Queue
-            }
+		while (!queue.isEmpty() && processed < maxPerTick) {
+			if (!ZombiesleepingMod.hasSpawnBudget()) {
+				break; // Server steht unter Last -> diesen Tick abbrechen
+			}
 
-            Request request = iterator.next().getValue();
-            iterator.remove();
+			// Erstes Element holen und sofort aus der Map entfernen, bevor Nebeneffekte entstehen
+			var entry = queue.entrySet().iterator().next();
+			BlockPos pos = entry.getKey();
+			Request request = entry.getValue();
+			queue.remove(pos);
 
-            ServerLevel level = request.level;
-            BlockPos pos = request.pos;
+			ServerLevel level = request.level;
+			if (!level.isLoaded(pos)) {
+				continue;
+			}
 
-            if (!level.isLoaded(pos)) {
-                continue; // Chunk zwischenzeitlich entladen
-            }
+			BlockState currentState = level.getBlockState(pos);
+			if (!(currentState.getBlock() instanceof ZombieremainsBlock)) {
+				continue;
+			}
 
-            BlockState currentState = level.getBlockState(pos);
-            if (!(currentState.getBlock() instanceof ZombieremainsBlock)) {
-                continue; // Block existiert nicht mehr / wurde veraendert
-            }
+			Player targetPlayer = request.targetPlayerUuid != null
+				? level.getPlayerByUUID(request.targetPlayerUuid)
+				: null;
 
-            Player targetPlayer = request.targetPlayerUuid != null
-                ? level.getPlayerByUUID(request.targetPlayerUuid)
-                : null;
-
-            ZombieremainsBlock.spawnMobsFromBlock(level, pos, currentState, targetPlayer, request.forceSpawnAll);
-            processed++;
-        }
-    }
+			// Das Aufrufen von spawnMobsFromBlock kann nun gefahrlos neue Einträge via enqueue() hinzufügen
+			ZombieremainsBlock.spawnMobsFromBlock(level, pos, currentState, targetPlayer, request.forceSpawnAll);
+			processed++;
+		}
+	}
 }

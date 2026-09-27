@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "entity/zombie/zombie"
+    },
+    {
+      "type": "single",
+      "resource": "entity/skeleton/skeleton"
+    }
+  ]
+}
