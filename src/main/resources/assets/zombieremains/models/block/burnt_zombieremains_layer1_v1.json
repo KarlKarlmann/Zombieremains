@@ -1,0 +1,152 @@
+{
+  "format_version": "1.21.11",
+  "credit": "Pure Gravity Potential Energy Physics Generator",
+  "parent": "block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "zombieremains:block/burnt_zombieremains",
+    "texture": "zombieremains:block/burnt_zombieremains",
+    "coal": "minecraft:block/coal_block",
+    "ash": "minecraft:block/basalt_side"
+  },
+  "elements": [
+    {
+      "name": "Pile_Tier_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Zombie_Torso_1",
+      "from": [
+        1.64,
+        1.0,
+        3.11
+      ],
+      "to": [
+        9.64,
+        5.0,
+        15.11
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#coal"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#coal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#coal"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#coal"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#coal"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#coal"
+        }
+      }
+    }
+  ]
+}

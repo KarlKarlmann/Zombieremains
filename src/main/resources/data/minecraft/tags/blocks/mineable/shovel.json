@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "zombiesleeping:zombieremains",
-    "zombiesleeping:smoldering_zombieremains",
-	"zombiesleeping:burnt_zombieremains"
+    "zombieremains:zombieremains",
+    "zombieremains:smoldering_zombieremains",
+	"zombieremains:burnt_zombieremains"
   ]
 }

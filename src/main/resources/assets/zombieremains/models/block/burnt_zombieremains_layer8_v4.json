@@ -1,0 +1,1172 @@
+{
+  "format_version": "1.21.11",
+  "credit": "Pure Gravity Potential Energy Physics Generator",
+  "parent": "block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "zombieremains:block/burnt_zombieremains",
+    "texture": "zombieremains:block/burnt_zombieremains",
+    "coal": "minecraft:block/coal_block",
+    "ash": "minecraft:block/basalt_side"
+  },
+  "elements": [
+    {
+      "name": "Pile_Tier_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Mound_Chunk_1",
+      "from": [
+        0,
+        1,
+        7
+      ],
+      "to": [
+        8,
+        3,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Mound_Fill_2",
+      "from": [
+        6,
+        1,
+        1
+      ],
+      "to": [
+        12,
+        3,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6,
+            2
+          ],
+          "texture": "#coal"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6,
+            2
+          ],
+          "texture": "#coal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#coal"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#coal"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6,
+            8
+          ],
+          "texture": "#coal"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6,
+            8
+          ],
+          "texture": "#coal"
+        }
+      }
+    },
+    {
+      "name": "Mound_Chunk_2",
+      "from": [
+        6,
+        3,
+        1
+      ],
+      "to": [
+        12,
+        4,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            6,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            6,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6,
+            8
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6,
+            8
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Mound_Fill_3",
+      "from": [
+        0,
+        1,
+        6
+      ],
+      "to": [
+        6,
+        3,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6,
+            2
+          ],
+          "texture": "#ash"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6,
+            2
+          ],
+          "texture": "#ash"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            7,
+            2
+          ],
+          "texture": "#ash"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            7,
+            2
+          ],
+          "texture": "#ash"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6,
+            7
+          ],
+          "texture": "#ash"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6,
+            7
+          ],
+          "texture": "#ash"
+        }
+      }
+    },
+    {
+      "name": "Mound_Chunk_3",
+      "from": [
+        0,
+        3,
+        6
+      ],
+      "to": [
+        6,
+        5,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            14,
+            6,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            14,
+            7,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            14,
+            6,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            14,
+            7,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6,
+            7
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Mound_Fill_4",
+      "from": [
+        7,
+        1,
+        9
+      ],
+      "to": [
+        15,
+        3,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            4,
+            2
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            4,
+            2
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Mound_Chunk_4",
+      "from": [
+        7,
+        3,
+        9
+      ],
+      "to": [
+        15,
+        5,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            14,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            14,
+            8,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            14,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Skeleton_Ribs_1",
+      "from": [
+        8.8,
+        1.41,
+        2.33
+      ],
+      "to": [
+        12.8,
+        9.41,
+        14.33
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            8.0
+          ],
+          "texture": "#coal"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            8.0
+          ],
+          "texture": "#coal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            8.0
+          ],
+          "texture": "#coal"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            8.0
+          ],
+          "texture": "#coal"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            12.0
+          ],
+          "texture": "#coal"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            12.0
+          ],
+          "texture": "#coal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          10.8,
+          5.41,
+          8.33
+        ],
+        "axis": "z",
+        "angle": 45.0
+      }
+    },
+    {
+      "name": "Skeleton_Ribs_2",
+      "from": [
+        9.3,
+        1.41,
+        1.46
+      ],
+      "to": [
+        13.3,
+        9.41,
+        13.46
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            8.0
+          ],
+          "texture": "#ash"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            8.0
+          ],
+          "texture": "#ash"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            8.0
+          ],
+          "texture": "#ash"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            8.0
+          ],
+          "texture": "#ash"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            12.0
+          ],
+          "texture": "#ash"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            4.0,
+            12.0
+          ],
+          "texture": "#ash"
+        }
+      },
+      "rotation": {
+        "origin": [
+          11.3,
+          5.41,
+          7.46
+        ],
+        "axis": "z",
+        "angle": 45.0
+      }
+    },
+    {
+      "name": "Skeleton_Skull_3",
+      "from": [
+        8.59,
+        3.77,
+        0.34
+      ],
+      "to": [
+        14.59,
+        9.77,
+        6.34
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#texture"
+        }
+      },
+      "rotation": {
+        "origin": [
+          11.59,
+          6.77,
+          3.34
+        ],
+        "axis": "z",
+        "angle": -22.5
+      }
+    },
+    {
+      "name": "Skeleton_Leg_4",
+      "from": [
+        13.49,
+        3.54,
+        1.53
+      ],
+      "to": [
+        15.49,
+        5.54,
+        13.53
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            2.0,
+            2.0
+          ],
+          "texture": "#coal"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            2.0,
+            2.0
+          ],
+          "texture": "#coal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            2.0
+          ],
+          "texture": "#coal"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            2.0
+          ],
+          "texture": "#coal"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            2.0,
+            12.0
+          ],
+          "texture": "#coal"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            2.0,
+            12.0
+          ],
+          "texture": "#coal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          14.49,
+          4.54,
+          7.53
+        ],
+        "axis": "z",
+        "angle": 22.5
+      }
+    },
+    {
+      "name": "Zombie_Head_5",
+      "from": [
+        8.61,
+        4.0,
+        2.98
+      ],
+      "to": [
+        14.61,
+        10.0,
+        8.98
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#ash"
+        }
+      }
+    },
+    {
+      "name": "Skeleton_Ribs_6",
+      "from": [
+        2.59,
+        5.0,
+        3.8
+      ],
+      "to": [
+        10.59,
+        9.0,
+        15.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Zombie_Head_7",
+      "from": [
+        0.27,
+        4.98,
+        8.53
+      ],
+      "to": [
+        6.27,
+        10.98,
+        14.53
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            6.0,
+            6.0
+          ],
+          "texture": "#coal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          3.27,
+          7.98,
+          11.53
+        ],
+        "axis": "x",
+        "angle": 22.5
+      }
+    },
+    {
+      "name": "Zombie_Torso_8",
+      "from": [
+        4.98,
+        6.24,
+        1.59
+      ],
+      "to": [
+        12.98,
+        10.24,
+        13.59
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#ash"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            4.0
+          ],
+          "texture": "#ash"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#ash"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12.0,
+            4.0
+          ],
+          "texture": "#ash"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#ash"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8.0,
+            12.0
+          ],
+          "texture": "#ash"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8.98,
+          8.24,
+          7.59
+        ],
+        "axis": "z",
+        "angle": -45.0
+      }
+    }
+  ]
+}

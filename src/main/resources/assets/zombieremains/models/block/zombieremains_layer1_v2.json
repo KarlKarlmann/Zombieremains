@@ -1,0 +1,158 @@
+{
+  "format_version": "1.21.11",
+  "credit": "Pure Gravity Potential Energy Physics Generator",
+  "parent": "block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "zombieremains:block/zombieremains",
+    "texture": "zombieremains:block/zombieremains",
+    "zombie": "minecraft:entity/zombie/zombie",
+    "skeleton": "minecraft:entity/skeleton/skeleton"
+  },
+  "elements": [
+    {
+      "name": "Pile_Tier_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Zombie_Leg_1",
+      "from": [
+        2.38,
+        1.0,
+        3.6
+      ],
+      "to": [
+        14.38,
+        5.0,
+        7.6
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            5,
+            1,
+            8
+          ],
+          "texture": "#zombie",
+          "rotation": 270
+        },
+        "down": {
+          "uv": [
+            2,
+            5,
+            3,
+            8
+          ],
+          "texture": "#zombie",
+          "rotation": 270
+        },
+        "north": {
+          "uv": [
+            1,
+            8,
+            2,
+            5
+          ],
+          "texture": "#zombie",
+          "rotation": 270
+        },
+        "south": {
+          "uv": [
+            3,
+            8,
+            4,
+            5
+          ],
+          "texture": "#zombie",
+          "rotation": 90
+        },
+        "east": {
+          "uv": [
+            2,
+            4,
+            3,
+            5
+          ],
+          "texture": "#zombie",
+          "rotation": 90
+        },
+        "west": {
+          "uv": [
+            1,
+            4,
+            2,
+            5
+          ],
+          "texture": "#zombie",
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

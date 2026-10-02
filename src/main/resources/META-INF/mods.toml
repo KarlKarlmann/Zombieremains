@@ -3,18 +3,18 @@ loaderVersion="[47,)"
 license="CC BY-NC 4.0"
 
 [[mods]]
-modId="zombiesleeping"
+modId="zombieremains"
 version="${version}"
-displayName="zombiesleeping"
+displayName="zombieremains"
 displayURL="https://www.n3g.de"
-logoFile="zombiesleeping.png"
+logoFile="zombieremains.png"
 credits="NOT created using the mod maker MCreator — but kindly mentioned because the initial setup was generated with it."
 authors="Karl Karlmann"
-mixins = [{config = "zombiesleeping.mixins.json"}]
+mixins = [{config = "zombieremains.mixins.json"}]
 # Start of user code block mod configuration
 # End of user code block mod configuration
 
-[[dependencies.zombiesleeping]]
+[[dependencies.zombieremains]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.1]"

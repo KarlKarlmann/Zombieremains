@@ -1,0 +1,158 @@
+{
+  "format_version": "1.21.11",
+  "credit": "Pure Gravity Potential Energy Physics Generator",
+  "parent": "block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "zombieremains:block/zombieremains",
+    "texture": "zombieremains:block/zombieremains",
+    "zombie": "minecraft:entity/zombie/zombie",
+    "skeleton": "minecraft:entity/skeleton/skeleton"
+  },
+  "elements": [
+    {
+      "name": "Pile_Tier_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "Skeleton_Leg_1",
+      "from": [
+        2.15,
+        1.0,
+        1.25
+      ],
+      "to": [
+        14.15,
+        3.0,
+        3.25
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.0,
+            9,
+            0.5,
+            15
+          ],
+          "texture": "#skeleton",
+          "rotation": 270
+        },
+        "down": {
+          "uv": [
+            1.0,
+            9,
+            1.5,
+            15
+          ],
+          "texture": "#skeleton",
+          "rotation": 270
+        },
+        "north": {
+          "uv": [
+            0.5,
+            15,
+            1.0,
+            9
+          ],
+          "texture": "#skeleton",
+          "rotation": 270
+        },
+        "south": {
+          "uv": [
+            1.5,
+            15,
+            2.0,
+            9
+          ],
+          "texture": "#skeleton",
+          "rotation": 90
+        },
+        "east": {
+          "uv": [
+            1.0,
+            8,
+            1.5,
+            9
+          ],
+          "texture": "#skeleton",
+          "rotation": 90
+        },
+        "west": {
+          "uv": [
+            0.5,
+            8,
+            1.0,
+            9
+          ],
+          "texture": "#skeleton",
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

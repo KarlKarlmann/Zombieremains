@@ -1,0 +1,163 @@
+{
+  "screamer1": {
+    "subtitle": "subtitles.screamer1",
+    "sounds": [
+      {
+        "name": "zombieremains:screamer1",
+        "stream": false
+      }
+    ]
+  },
+  "screamer2": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer2",
+        "stream": false
+      }
+    ]
+  },
+  "screamer3": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer3",
+        "stream": false
+      }
+    ]
+  },
+  "screamer4": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer4",
+        "stream": false
+      }
+    ]
+  },
+  "screamer5": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer5",
+        "stream": false
+      }
+    ]
+  },
+  "screamer6": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer6",
+        "stream": false
+      }
+    ]
+  },
+  "screamer7": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer7",
+        "stream": false
+      }
+    ]
+  },
+  "screamer8": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer8",
+        "stream": false
+      }
+    ]
+  },
+  "screamer9": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer9",
+        "stream": false
+      }
+    ]
+  },
+  "screamer10": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer91",
+        "stream": false
+      }
+    ]
+  },
+  "screamer11": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer92",
+        "stream": false
+      }
+    ]
+  },
+  "screamer12": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer93",
+        "stream": false
+      }
+    ]
+  },
+  "screamer13": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer94",
+        "stream": false
+      }
+    ]
+  },
+  "screamer14": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer95",
+        "stream": false
+      }
+    ]
+  },
+  "screamer15": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer96",
+        "stream": false
+      }
+    ]
+  },
+  "screamer16": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer97",
+        "stream": false
+      }
+    ]
+  },
+  "screamer17": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer98",
+        "stream": false
+      }
+    ]
+  },
+  "screamer18": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer99",
+        "stream": false
+      }
+    ]
+  },
+  "screamer19": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer991",
+        "stream": false
+      }
+    ]
+  },
+  "screamer20": {
+    "sounds": [
+      {
+        "name": "zombieremains:screamer992",
+        "stream": false
+      }
+    ]
+  }
+}

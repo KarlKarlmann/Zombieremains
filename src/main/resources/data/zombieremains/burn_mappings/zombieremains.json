@@ -1,0 +1,8 @@
+{
+  "mappings": [
+    {
+      "from": "zombieremains:zombieremains",
+      "to": "zombieremains:smoldering_zombieremains"
+    }
+  ]
+}
